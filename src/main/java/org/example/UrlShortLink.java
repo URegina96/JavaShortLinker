@@ -6,20 +6,19 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class UrlShortLink {
     private final Map<String, UrlData> urlMap = new ConcurrentHashMap<>();
     private final SecureRandom random = new SecureRandom();
     private final long linkLifetime = TimeUnit.MINUTES.toMillis(5);
 
-    public String shortenUrl(String longUrl, String userId) {
+    public String shortenUrl(String longUrl, String userId, int clickLimit) {
         String shortUrl;
         do {
             shortUrl = generateShortUrl();
         } while (urlMap.containsKey(shortUrl));
 
-        urlMap.put(shortUrl, new UrlData(longUrl, userId));
+        urlMap.put(shortUrl, new UrlData(longUrl, userId, clickLimit));
         return shortUrl;
     }
 
@@ -27,6 +26,19 @@ public class UrlShortLink {
         byte[] bytes = new byte[9];
         random.nextBytes(bytes);
         return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
+    }
+
+    public String getOriginalUrl(String shortUrl) {
+        UrlData urlData = urlMap.get(shortUrl);
+        if (urlData != null) {
+            if (!urlData.isClickLimitReached()) {
+                urlData.getClickCount().incrementAndGet();
+                return urlData.getLongUrl();
+            } else {
+                System.out.println("Лимит переходов по ссылке достигнут.");
+            }
+        }
+        return null;
     }
 
     public void cleanupExpiredUrls() {
@@ -40,5 +52,3 @@ public class UrlShortLink {
         }
     }
 }
-
-

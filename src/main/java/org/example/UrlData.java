@@ -7,10 +7,12 @@ class UrlData {
     private final String userId;
     private final AtomicInteger clickCount = new AtomicInteger(0);
     private final long creationTime = System.currentTimeMillis();
+    private final int clickLimit;
 
-    UrlData(String longUrl, String userId) {
+    UrlData(String longUrl, String userId, int clickLimit) {
         this.longUrl = longUrl;
         this.userId = userId;
+        this.clickLimit = clickLimit;
     }
 
     public String getLongUrl() {
@@ -28,5 +30,12 @@ class UrlData {
     public long getCreationTime() {
         return creationTime;
     }
-}
 
+    public int getClickLimit() {
+        return clickLimit;
+    }
+
+    public boolean isClickLimitReached() {
+        return clickCount.get() >= clickLimit;
+    }
+}

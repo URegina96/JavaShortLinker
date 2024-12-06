@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2938f56-a155-49c3-88f9-8f0b44a1d8f0" name="Changes" comment="git init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UrlData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UrlShortLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/model/UUID.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b2938f56-a155-49c3-88f9-8f0b44a1d8f0" name="Changes" comment="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +81,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733517156553</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main.">
+      <option name="closed" value="true" />
+      <created>1733518039647</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733518039647</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git init" />
-    <option name="LAST_COMMIT_MESSAGE" value="git init" />
+    <MESSAGE value="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main." />
+    <option name="LAST_COMMIT_MESSAGE" value="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main." />
   </component>
 </project>
