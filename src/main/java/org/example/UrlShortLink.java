@@ -4,6 +4,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +13,7 @@ public class UrlShortLink {
     private final SecureRandom random = new SecureRandom();
     private final long linkLifetime = TimeUnit.MINUTES.toMillis(5);
 
-    public String shortenUrl(String longUrl, String userId, int clickLimit) {
+    public String shortenUrl(String longUrl, UUID userId, int clickLimit) {
         String shortUrl;
         do {
             shortUrl = generateShortUrl();

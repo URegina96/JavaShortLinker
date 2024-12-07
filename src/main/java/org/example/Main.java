@@ -5,11 +5,12 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         UrlShortLink urlShortLink = new UrlShortLink();
+        User user = new User();
 
         System.out.println("Добро пожаловать в сервис сокращения ссылок!");
 
         System.out.println("1. Создание короткой ссылки");
-        String shortUrl1 = urlShortLink.shortenUrl("https://example.com", "user1", 5);
+        String shortUrl1 = urlShortLink.shortenUrl("https://example.com", user.getUuid(), 5);
         System.out.println("Short URL 1: " + shortUrl1);
 
         System.out.println("2. Переход по короткой ссылке");

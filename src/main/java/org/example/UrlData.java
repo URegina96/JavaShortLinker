@@ -1,15 +1,16 @@
 package org.example;
 
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class UrlData {
     private final String longUrl;
-    private final String userId;
+    private final UUID userId;
     private final AtomicInteger clickCount = new AtomicInteger(0);
     private final long creationTime = System.currentTimeMillis();
     private final int clickLimit;
 
-    UrlData(String longUrl, String userId, int clickLimit) {
+    UrlData(String longUrl, UUID userId, int clickLimit) {
         this.longUrl = longUrl;
         this.userId = userId;
         this.clickLimit = clickLimit;
