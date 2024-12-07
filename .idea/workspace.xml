@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2938f56-a155-49c3-88f9-8f0b44a1d8f0" name="Changes" comment="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main." />
+    <list default="true" id="b2938f56-a155-49c3-88f9-8f0b44a1d8f0" name="Changes" comment="&#10;Что добавилось в доработанном коде:                     &#10;Класс UrlData:                      &#10;Добавлено поле clickLimit для лимита переходов.&#10;Методы для получения лимита переходов и проверки достижения лимита переходов (isClickLimitReached()).&#10;&#10;Класс UrlShortLink:                      &#10;Метод shortenUrl теперь принимает лимит переходов и сохраняет его в UrlData.&#10;В метод getOriginalUrl добавлена проверка достижения лимита переходов и уведомление пользователя в случае его достижения.&#10;&#10;Класс Main:                              &#10;Добавлена логика для создания короткой ссылки с указанием лимита переходов.&#10;Добавлена логика перехода по короткой ссылке и перенаправления в браузере.&#10;&#10;Добавлено основное меню для взаимодействия с пользователем через консоль (создание коротких ссылок, переход по коротким ссылкам и выход из программы).">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UrlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UrlData.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,13 +43,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.JavaShortLinker [:Main.main()].executor": "Run",
     "Gradle.JavaShortLinker [:org.example.Main.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/JavaBinarySearchUtils",
-    "settings.editor.selected.configurable": "terminal"
+    "last_opened_file_path": "E:/Александр Тетюков, шахматы/JavaShortLinker",
+    "settings.editor.selected.configurable": "File.Encoding"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733518039647</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&#10;Что добавилось в доработанном коде:                     &#10;Класс UrlData:                      &#10;Добавлено поле clickLimit для лимита переходов.&#10;Методы для получения лимита переходов и проверки достижения лимита переходов (isClickLimitReached()).&#10;&#10;Класс UrlShortLink:                      &#10;Метод shortenUrl теперь принимает лимит переходов и сохраняет его в UrlData.&#10;В метод getOriginalUrl добавлена проверка достижения лимита переходов и уведомление пользователя в случае его достижения.&#10;&#10;Класс Main:                              &#10;Добавлена логика для создания короткой ссылки с указанием лимита переходов.&#10;Добавлена логика перехода по короткой ссылке и перенаправления в браузере.&#10;&#10;Добавлено основное меню для взаимодействия с пользователем через консоль (создание коротких ссылок, переход по коротким ссылкам и выход из программы).">
+      <option name="closed" value="true" />
+      <created>1733518201426</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733518201426</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +119,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git init" />
     <MESSAGE value="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main." />
-    <option name="LAST_COMMIT_MESSAGE" value="  &#10;Текущая реализация                    &#10;Класс UrlData:          &#10;Сохраняет длинный URL, идентификатор пользователя, количество кликов и время создания ссылки.&#10;Методы для получения длинного URL, идентификатора пользователя, количества кликов и времени создания.&#10;&#10;Класс UrlShortLink:            &#10;Генерация коротких URL с помощью SecureRandom и Base64.&#10;Хранение ссылок в ConcurrentHashMap.&#10;Автоматическое удаление ссылок по истечении времени жизни (5 минут).&#10;Метод shortenUrl для сокращения длинного URL.&#10;Метод cleanupExpiredUrls для удаления устаревших ссылок.&#10;&#10;Класс Main:         &#10;Точка входа в программу с простым выводом &quot;Hello world!&quot;.&#10;&#10;Что добавлено     &#10;Лимит переходов в UrlData.&#10;Проверка лимита переходов и уведомление пользователя в UrlShortLink.&#10;Логика для перехода по короткой ссылке и редирект в браузере в Main." />
+    <MESSAGE value="&#10;Что добавилось в доработанном коде:                     &#10;Класс UrlData:                      &#10;Добавлено поле clickLimit для лимита переходов.&#10;Методы для получения лимита переходов и проверки достижения лимита переходов (isClickLimitReached()).&#10;&#10;Класс UrlShortLink:                      &#10;Метод shortenUrl теперь принимает лимит переходов и сохраняет его в UrlData.&#10;В метод getOriginalUrl добавлена проверка достижения лимита переходов и уведомление пользователя в случае его достижения.&#10;&#10;Класс Main:                              &#10;Добавлена логика для создания короткой ссылки с указанием лимита переходов.&#10;Добавлена логика перехода по короткой ссылке и перенаправления в браузере.&#10;&#10;Добавлено основное меню для взаимодействия с пользователем через консоль (создание коротких ссылок, переход по коротким ссылкам и выход из программы)." />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;Что добавилось в доработанном коде:                     &#10;Класс UrlData:                      &#10;Добавлено поле clickLimit для лимита переходов.&#10;Методы для получения лимита переходов и проверки достижения лимита переходов (isClickLimitReached()).&#10;&#10;Класс UrlShortLink:                      &#10;Метод shortenUrl теперь принимает лимит переходов и сохраняет его в UrlData.&#10;В метод getOriginalUrl добавлена проверка достижения лимита переходов и уведомление пользователя в случае его достижения.&#10;&#10;Класс Main:                              &#10;Добавлена логика для создания короткой ссылки с указанием лимита переходов.&#10;Добавлена логика перехода по короткой ссылке и перенаправления в браузере.&#10;&#10;Добавлено основное меню для взаимодействия с пользователем через консоль (создание коротких ссылок, переход по коротким ссылкам и выход из программы)." />
   </component>
 </project>

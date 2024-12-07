@@ -1,55 +1,36 @@
 package org.example;
 
-import java.awt.Desktop;
-import java.net.URI;
-import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         UrlShortLink urlShortLink = new UrlShortLink();
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Добро пожаловать в сервис сокращения ссылок!");
 
-        while (true) {
-            System.out.println("1. Создать короткую ссылку");
-            System.out.println("2. Перейти по короткой ссылке");
-            System.out.println("3. Выйти");
-            System.out.print("Выберите действие: ");
-            int choice = scanner.nextInt();
+        System.out.println("1. Создание короткой ссылки");
+        String shortUrl1 = urlShortLink.shortenUrl("https://example.com", "user1", 5);
+        System.out.println("Short URL 1: " + shortUrl1);
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Введите длинный URL: ");
-                    String longUrl = scanner.next();
-                    System.out.print("Введите ваш ID пользователя: ");
-                    String userId = scanner.next();
-                    System.out.print("Введите лимит переходов: ");
-                    int clickLimit = scanner.nextInt();
-                    String shortUrl = urlShortLink.shortenUrl(longUrl, userId, clickLimit);
-                    System.out.println("Короткая ссылка: " + shortUrl);
-                    break;
-                case 2:
-                    System.out.print("Введите короткую ссылку: ");
-                    String inputShortUrl = scanner.next();
-                    String originalUrl = urlShortLink.getOriginalUrl(inputShortUrl);
-                    if (originalUrl != null) {
-                        try {
-                            Desktop.getDesktop().browse(new URI(originalUrl));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        System.out.println("Ссылка недействительна или лимит переходов исчерпан.");
-                    }
-                    break;
-                case 3:
-                    System.out.println("До свидания!");
-                    scanner.close();
-                    System.exit(0);
-                default:
-                    System.out.println("Неверный выбор. Пожалуйста, попробуйте снова.");
+        System.out.println("2. Переход по короткой ссылке");
+        String originalUrl1 = urlShortLink.getOriginalUrl(shortUrl1);
+        System.out.println("Original URL 1: " + originalUrl1);
+
+        System.out.println("3. Ограничение по количеству переходов");
+        for (int i = 0; i < 6; i++) {
+            String result = urlShortLink.getOriginalUrl(shortUrl1);
+            if (result == null) {
+                System.out.println("Short URL 1 is no longer available.");
+                break;
             }
+        }
+
+        System.out.println("4. Удаление ссылок по истечении времени жизни");
+        Thread.sleep(TimeUnit.MINUTES.toMillis(6));
+        urlShortLink.cleanupExpiredUrls();
+        String expiredUrl = urlShortLink.getOriginalUrl(shortUrl1);
+        if (expiredUrl == null) {
+            System.out.println("Short URL 1 has been expired and removed.");
         }
     }
 }

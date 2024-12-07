@@ -19,20 +19,12 @@ class UrlData {
         return longUrl;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
     public AtomicInteger getClickCount() {
         return clickCount;
     }
 
     public long getCreationTime() {
         return creationTime;
-    }
-
-    public int getClickLimit() {
-        return clickLimit;
     }
 
     public boolean isClickLimitReached() {
